@@ -1,0 +1,1 @@
+TASK 0: Create a script that prints the absolute path of the current working directory.
