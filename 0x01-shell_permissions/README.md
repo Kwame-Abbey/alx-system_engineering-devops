@@ -1,0 +1,1 @@
+Scripts for specific shell permissions
