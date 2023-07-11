@@ -1,0 +1,1 @@
+This directory contains my knowledge on shell variables and expansions
