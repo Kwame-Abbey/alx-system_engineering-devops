@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Prints Best School 10 times using a for loop
+
+array=("Best School" "Best School" "Best School" "Best School" "Best School" "Best School" "Best School" "Best School" "Best School" "Best School")
+for element in "${array[@]}";
+do
+	echo "$element"
+done
