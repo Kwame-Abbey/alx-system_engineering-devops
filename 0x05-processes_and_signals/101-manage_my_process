@@ -4,26 +4,25 @@
 # argument 'stop' stops process, deletes file, displays message
 # argument 'restart' stops process, deletes file, starts process, creates new file, displays message
 
-FILE=/var/run/my_process.pid
-case $1 in
-    start)
+case "$1" in
+start)
 	./manage_my_process &
-	echo $$ > $FILE
+	echo "$!" >/var/run/my_process.pid
 	echo "manage_my_process started"
 	;;
-    stop)
-        pkill -f ./manage_my_process
-        sudo rm $FILE
-        echo "manage_my_process stopped"
+stop)
+	kill "$(cat /var/run/my_process.pid)"
+	rm /var/run/my_process.pid
+	echo "manage_my_process stopped"
 	;;
-    restart)
-        pkill -f ./manage_my_process
-        sudo rm $FILE
+restart)
+	kill "$(cat /var/run/my_process.pid)"
+	rm /var/run/my_process.pid
 	./manage_my_process &
-        echo $$ > $FILE
-        echo "manage_my_process restarted"
+	echo "$!" >/var/run/my_process.pid
+	echo "manage_my_process restarted"
 	;;
-    *)
-        echo "Usage: manage_my_process {start|stop|restart}"
+*)
+	echo "Usage: manage_my_process {start|stop|restart}"
 	;;
 esac
