@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# redirects /redirect_me to another page
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo service nginx start
+echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
+file="/etc/nginx/sites-available/default"
+sudo chmod +w $file
+cmd="location /redirect_me {\nreturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n}"
+sudo sed -i "37i $cmd" $file
+sudo service nginx restart
