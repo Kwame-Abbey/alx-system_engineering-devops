@@ -28,7 +28,7 @@ if __name__ == '__main__':
             len_completed_tasks += 1
             completed_tasks.append(todo.get('title'))
 
-    print(f"Employee {employee_name} is done with tasks "
+    print(f"Employee {employee_name} is done with tasks"
           f"({len_completed_tasks}/{len(todos_response)}):")
     for title in completed_tasks:
         print(f"\t {title}")
